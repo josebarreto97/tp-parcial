@@ -8,7 +8,7 @@ import parcial.modelo.autocompletado.Provincia;
 import java.util.List;
 import java.util.Scanner;
 
-public class API extends Command{
+public class GeoRefApi extends Command{
     @Override
     public void execute(Scanner scanner) {
         String token = scanner.next();

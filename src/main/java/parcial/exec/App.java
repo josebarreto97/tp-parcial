@@ -2,7 +2,7 @@ package parcial.exec;
 
 import java.util.Scanner;
 
-public class TestAPI {
+public class App {
 
     private static Scanner scanner;
 

@@ -33,38 +33,14 @@ public class Alumno extends Observable{
     }
 
     public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public void setNacimiento(String nacimiento) {
-        this.nacimiento = nacimiento;
-    }
-
-    public void setProvincia(String provincia) {
-        this.provincia = provincia;
-    }
-
-    public void setMunicipio(String municipio) {
-        this.municipio = municipio;
-    }
-
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+        this.notificar(this.apellido, this.apellido = apellido);
     }
 
     public void setEstado(Estado estado) {
-        this.estado = estado;
+        this.notificar(this.estado, this.estado = estado);
     }
 
     public void setCurso(Curso curso) {
-        this.curso = curso;
+        this.notificar(this.curso, this.curso = curso);
     }
 }
