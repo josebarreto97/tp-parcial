@@ -8,17 +8,16 @@ public class AlumnoSalidoObserver implements Observer{
         //Si el alumno salio, crear notificacion
         Alumno alumno = (Alumno) observable;
 
-        if(alumno.getEstado().equals(newValue) && newValue.equals()){
-            Estado oldSale = (Estado) oldValue;
-            Estado newSale = (Estado) newValue;
+        if(alumno.getEstado().equals(newValue) && newValue instanceof Salido){
+
+            this.bandeja.crearNotificacion(
+                    "Salida del " + alumno.getNombre() + " " + alumno.getApellido(),
+                    "El alumno " + alumno.getNombre() + " " + alumno.getApellido() +
+                            " salió del establecimiento"
+            );
         }
 
-        this.bandeja.crearNotificacion(
-                "Salida del " + alumno.getNombre() + " " + alumno.getApellido(),
-                "El alumno " + alumno.getNombre() + " " + alumno.getApellido() +
-                        " salio del " + oldSale.getEstado() +
-                        " a " + newSale.getEstado()
-        );
+
 
     }
 }
