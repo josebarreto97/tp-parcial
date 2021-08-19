@@ -1,5 +1,9 @@
 package parcial.modelo;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
 public class AlumnoCambioDeCursoObserver implements Observer{
     private BandejaNotificaciones bandeja;
 
@@ -9,7 +13,7 @@ public class AlumnoCambioDeCursoObserver implements Observer{
         // Si el alumno cambio de curso, crear una notificacion
         Alumno alumno = (Alumno) observable;
 
-        if(alumno.getCurso().equals(newValue)) {
+        if(alumno.getCurso() != null && oldValue != null && alumno.getCurso().equals(newValue)) {
 
             Curso oldCurso = (Curso) oldValue;
             Curso newCurso = (Curso) newValue;
