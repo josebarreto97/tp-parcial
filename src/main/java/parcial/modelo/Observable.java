@@ -16,7 +16,7 @@ public abstract class Observable {
 
     public void notificar() {
         this.observers.forEach(observer -> {
-            observer.update(this);
+            observer.update(this, this );
         });
     }
 
