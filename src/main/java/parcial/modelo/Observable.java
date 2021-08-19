@@ -14,17 +14,17 @@ public abstract class Observable {
         this.observers = new ArrayList<>();
     }
 
-    // TODO
     public void notificar() {
-
+        this.observers.forEach(observer -> {
+            observer.update(this);
+        });
     }
 
-    public void suscribir() {
-
+    public void suscribirse(Observer observer) {
+        this.observers.add(observer);
     }
 
-    public void desuscribir() {
-
+    public void desuscribir(Observer observer) {
+        this.observers.remove(observer);
     }
-
 }

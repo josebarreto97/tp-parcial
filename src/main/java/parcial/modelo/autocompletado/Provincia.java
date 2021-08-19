@@ -5,6 +5,6 @@ import lombok.Setter;
 
 @Getter @Setter
 public class Provincia {
-    private int id;
+    private String id;
     private String nombre;
 }

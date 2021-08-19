@@ -39,11 +39,33 @@ public class BuscadorGeoRef {
 
     }
 
-    public List<Municipio> buscarMunicipios(Provincia provincia) {
-        return null;
+    public List<Municipio> buscarMunicipios(String provincia) {
+        RespuestaMunicipios respuesta = this.webClient.get()
+                .uri("/municipios?campos=id,nombre&provincia="+provincia)
+                .retrieve()
+                .bodyToMono(RespuestaMunicipios.class)
+                .block();
+
+        if(respuesta != null && respuesta.getCantidad() > 0) {
+            return respuesta.getMunicipios();
+        }
+        else {
+            return new ArrayList<>();
+        }
     }
 
-    public List<Localidad> buscarLocalidades(Municipio municipio) {
-        return null;
+    public List<Localidad> buscarLocalidades(String municipio) {
+        RespuestaLocalidades respuesta = this.webClient.get()
+                .uri("/localidades?campos=id,nombre&municipio="+municipio)
+                .retrieve()
+                .bodyToMono(RespuestaLocalidades.class)
+                .block();
+
+        if(respuesta != null && respuesta.getCantidad() > 0) {
+            return respuesta.getLocalidades();
+        }
+        else {
+            return new ArrayList<>();
+        }
     }
 }
