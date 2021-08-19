@@ -9,7 +9,7 @@ public class BandejaNotificaciones {
     public BandejaNotificaciones(){
         this.notificaciones = new ArrayList<>();
     }
-    
+
     public void crearNotificacion(String titulo, String cuerpo) {
         Notificacion notificacion = new Notificacion();
         notificacion.setTitulo(titulo);
