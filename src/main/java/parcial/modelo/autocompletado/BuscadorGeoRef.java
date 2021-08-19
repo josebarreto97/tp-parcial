@@ -22,7 +22,6 @@ public class BuscadorGeoRef {
         return instancia;
     }
 
-    //TODO buscar en GeoRef
     public List<Provincia> buscarProvincias() {
         RespuestaProvincias respuesta = this.webClient.get()
                 .uri("/provincias?campos=id,nombre")

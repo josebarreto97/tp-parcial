@@ -1,61 +1,16 @@
-package parcial;
+package parcial.exec;
 
 import parcial.modelo.autocompletado.BuscadorGeoRef;
 import parcial.modelo.autocompletado.Localidad;
 import parcial.modelo.autocompletado.Municipio;
 import parcial.modelo.autocompletado.Provincia;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Scanner;
 
-public class TestAPI {
-
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_BLACK = "\u001B[30m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_CYAN = "\u001B[36m";
-    public static final String ANSI_WHITE = "\u001B[37m";
-
-    private static Scanner scanner;
-
-    public static void main(String[] args) throws IOException {
-        scanner = new Scanner(System.in);
-        scanner.useDelimiter("\\s");
-        menu();
-    }
-
-    private static void error(String expected, String actual) {
-        System.out.println(ANSI_YELLOW + "Error sintáctico: se esperaba " + ANSI_RESET  + expected + ANSI_YELLOW + " pero se envio " + ANSI_RESET + actual);
-    }
-
-    private static void menu() {
-        System.out.println(" --- MENU --- ");
-        System.out.println("api provincias <= 'Listado de provincias'");
-        System.out.println("api municipios [provincia_id] <= 'Listado de municipios'");
-        System.out.println("api localidades [municipio_id] <= 'Listado de localidades'");
-
-        while(scanner.hasNext()) {
-            String token = scanner.next();
-
-            if(token.equals("api"))
-            {
-                api();
-            }
-            else
-            {
-                error("api", token);
-            }
-        }
-    }
-
-    private static void api() {
+public class API extends Command{
+    @Override
+    public void execute(Scanner scanner) {
         String token = scanner.next();
 
         if(token.equals("provincias")) {
@@ -97,7 +52,7 @@ public class TestAPI {
             }
         }
         else {
-            error("provincias | municipios | localidades", token);
+            error(scanner,"provincias | municipios | localidades", token);
         }
     }
 }
