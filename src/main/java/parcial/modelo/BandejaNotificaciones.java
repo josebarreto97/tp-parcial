@@ -1,17 +1,25 @@
 package parcial.modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BandejaNotificaciones {
     private List<Notificacion> notificaciones;
 
-    // TODO conectar con los estados
-    public void crearNotificacion() {
+    public BandejaNotificaciones(){
+        this.notificaciones = new ArrayList<>();
+    }
+    
+    public void crearNotificacion(String titulo, String cuerpo) {
+        Notificacion notificacion = new Notificacion();
+        notificacion.setTitulo(titulo);
+        notificacion.setCuerpo(cuerpo);
 
+        notificaciones.add(notificacion);
     }
 
     public void limpiar() {
-
+        notificaciones.clear();
     }
 
 }
