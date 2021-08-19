@@ -5,7 +5,7 @@ public class AlumnoReInscriptoObserver implements Observer{
 
     // TODO
     @Override
-    public void update(Observable pre, Observable post) {
+    public void update(Observable observable, Object oldValue, Object newValue) {
 
     }
 }

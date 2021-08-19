@@ -14,9 +14,9 @@ public abstract class Observable {
         this.observers = new ArrayList<>();
     }
 
-    public void notificar() {
+    public void notificar(Object oldValue, Object newValue) {
         this.observers.forEach(observer -> {
-            observer.update(this, this );
+            observer.update(this, oldValue, newValue );
         });
     }
 

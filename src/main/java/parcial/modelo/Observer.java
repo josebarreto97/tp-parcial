@@ -1,5 +1,5 @@
 package parcial.modelo;
 
 public interface Observer {
-    void update(Observable pre, Observable post);
+    void update(Observable observable, Object oldValue, Object newValue);
 }
