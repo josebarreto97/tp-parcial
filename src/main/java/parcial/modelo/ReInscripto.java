@@ -1,6 +1,12 @@
 package parcial.modelo;
 
-public class ReInscripto implements Estado{
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class ReInscripto implements Estado {
+    public String nombre = "ReInscripto";
     @Override
     public void promociona(Alumno alumno) {
         if(alumno.getCurso().isEgresados()) {

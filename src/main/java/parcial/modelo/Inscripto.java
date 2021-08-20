@@ -1,6 +1,12 @@
 package parcial.modelo;
 
-public class Inscripto implements Estado{
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class Inscripto implements Estado {
+    public String nombre = "Inscripto";
     @Override
     public void promociona(Alumno alumno) {
         alumno.setEstado(new Promovido());

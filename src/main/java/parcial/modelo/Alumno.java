@@ -3,12 +3,14 @@ package parcial.modelo;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter @Setter
 public class Alumno extends Observable{
     private String nombre;
     private String apellido;
     private String dni;
-    private String nacimiento;
+    private Date nacimiento;
     private String provincia;
     private String municipio;
     private String localidad;

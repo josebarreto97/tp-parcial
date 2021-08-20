@@ -1,12 +1,23 @@
 package parcial.test;
 
+import parcial.dao.AlumnoDao;
 import parcial.modelo.*;
 
+import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.List;
 
 public class ObserverTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+        AlumnoDao alumnoDao = new AlumnoDao();
+        List<Alumno> alumnos = alumnoDao.getAll();
 
+        for (Alumno alumno : alumnos) {
+            System.out.println(alumno.getNombre() + alumno.getApellido());
+        }
+    }
+
+    public static void crearAlumno() {
         Alumno alumno = new Alumno();
         BandejaNotificaciones bandeja = new BandejaNotificaciones();
 
