@@ -8,6 +8,7 @@ import java.util.List;
 
 @Getter @Setter
 public abstract class Educador {
+    private Long id;
     private String nombre;
     private List<Curso> cursos;
     private BandejaNotificaciones bandejaNotificaciones;

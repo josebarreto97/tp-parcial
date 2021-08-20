@@ -8,6 +8,7 @@ import java.util.List;
 
 @Getter @Setter
 public class BandejaNotificaciones {
+    private Long id;
     private List<Notificacion> notificaciones;
 
     public BandejaNotificaciones(){

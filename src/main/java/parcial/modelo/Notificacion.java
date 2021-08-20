@@ -1,6 +1,7 @@
 package parcial.modelo;
 
 public class Notificacion {
+    private Long id;
     private String titulo;
     private String cuerpo;
 
