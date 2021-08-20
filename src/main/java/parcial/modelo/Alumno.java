@@ -7,6 +7,7 @@ import java.util.Date;
 
 @Getter @Setter
 public class Alumno extends Observable{
+    private Long id;
     private String nombre;
     private String apellido;
     private String dni;

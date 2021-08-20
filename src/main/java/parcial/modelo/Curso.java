@@ -8,6 +8,7 @@ import java.util.List;
 
 @Getter @Setter
 public class Curso {
+    private Long id;
     private String grado;
     private String division;
     private List<Alumno> alumnos;

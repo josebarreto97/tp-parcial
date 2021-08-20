@@ -8,6 +8,7 @@ import java.util.List;
 
 @Getter @Setter
 public class Establecimiento {
+    private Long id;
     private String nombre;
     private String provincia;
     private String municipio;

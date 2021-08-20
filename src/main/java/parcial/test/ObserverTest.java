@@ -1,6 +1,8 @@
 package parcial.test;
 
 import parcial.dao.AlumnoDao;
+import parcial.dao.CursoDao;
+import parcial.dao.EstablecimientoDao;
 import parcial.modelo.*;
 
 import java.sql.SQLException;
@@ -9,12 +11,10 @@ import java.util.List;
 
 public class ObserverTest {
     public static void main(String[] args) throws SQLException {
-        AlumnoDao alumnoDao = new AlumnoDao();
-        List<Alumno> alumnos = alumnoDao.getAll();
+        EstablecimientoDao establecimientoDao = new EstablecimientoDao();
+        Establecimiento establecimiento = establecimientoDao.get(1);
 
-        for (Alumno alumno : alumnos) {
-            System.out.println(alumno.getNombre() + alumno.getApellido());
-        }
+        System.out.println(establecimiento.getNombre());
     }
 
     public static void crearAlumno() {
