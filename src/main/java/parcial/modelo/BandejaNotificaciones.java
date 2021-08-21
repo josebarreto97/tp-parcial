@@ -2,6 +2,7 @@ package parcial.modelo;
 
 import lombok.Getter;
 import lombok.Setter;
+import parcial.dao.NotificacionDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,9 @@ public class BandejaNotificaciones {
         notificacion.setCuerpo(cuerpo);
 
         notificaciones.add(notificacion);
+
+        NotificacionDao notificacionDao = new NotificacionDao();
+        notificacionDao.saveInto(notificacion, this);
     }
 
     public void limpiar() {

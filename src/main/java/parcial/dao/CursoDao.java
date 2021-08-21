@@ -1,6 +1,7 @@
 package parcial.dao;
 
 import parcial.modelo.Curso;
+import parcial.modelo.Educador;
 import parcial.modelo.Establecimiento;
 
 import java.sql.Connection;
@@ -49,6 +50,7 @@ public class CursoDao implements Dao<Curso>{
             ResultSet result = statement.executeQuery();
 
             AlumnoDao alumnoDao = new AlumnoDao();
+            MaestroDao maestroDao = new MaestroDao();
 
             while(result.next()) {
                 Curso curso = new Curso();
@@ -56,8 +58,8 @@ public class CursoDao implements Dao<Curso>{
                 curso.setGrado(result.getString("grado"));
                 curso.setDivision(result.getString("division"));
                 curso.setEgresados(result.getBoolean("egresados"));
+                curso.setEducador(maestroDao.getFromCurso(curso));
                 curso.setAlumnos(alumnoDao.getFromCurso(curso));
-
                 cursos.add(curso);
             }
         } catch (SQLException exception) {

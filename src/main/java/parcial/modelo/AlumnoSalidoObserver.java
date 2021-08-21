@@ -1,5 +1,10 @@
 package parcial.modelo;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class AlumnoSalidoObserver implements Observer{
     private BandejaNotificaciones bandeja;
 
@@ -8,7 +13,7 @@ public class AlumnoSalidoObserver implements Observer{
         //Si el alumno salio, crear notificacion
         Alumno alumno = (Alumno) observable;
 
-        if(alumno.getEstado().equals(newValue) && newValue instanceof Salido){
+        if(oldValue != null && alumno.getEstado().equals(newValue) && newValue instanceof Salido){
 
             this.bandeja.crearNotificacion(
                     "Salida del " + alumno.getNombre() + " " + alumno.getApellido(),

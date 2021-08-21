@@ -1,23 +1,11 @@
 package parcial.modelo;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
 public class Notificacion {
     private Long id;
     private String titulo;
     private String cuerpo;
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getCuerpo() {
-        return cuerpo;
-    }
-
-    public void setCuerpo(String cuerpo) {
-        this.cuerpo = cuerpo;
-    }
 }

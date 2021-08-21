@@ -60,6 +60,18 @@ public class AlumnoDao implements Dao<Alumno>{
                 getAlumnoFromResult(resultSet, alumno);
                 alumno.setCurso(curso);
 
+                if(curso.getEducador() != null) {
+                    AlumnoCambioDeCursoObserver observer1 = new AlumnoCambioDeCursoObserver();
+                    AlumnoRepitenteObserver observer2 = new AlumnoRepitenteObserver();
+                    AlumnoSalidoObserver observer3 = new AlumnoSalidoObserver();
+
+                    observer1.setBandeja(curso.getEducador().getBandejaNotificaciones());
+                    observer2.setBandeja(curso.getEducador().getBandejaNotificaciones());
+                    observer3.setBandeja(curso.getEducador().getBandejaNotificaciones());
+
+                    alumno.setObservers(Arrays.asList(observer1, observer2, observer3));
+                }
+
                 for (Estado estado : this.estados) {
                     String estadoNombre = estado.getNombre();
                     String estadoDb = resultSet.getString("estado");
@@ -101,6 +113,30 @@ public class AlumnoDao implements Dao<Alumno>{
 
     @Override
     public void update(Alumno alumno, String[] params) {
+        Connection connection = DB.getInstancia().getConnection();
 
+        try {
+            PreparedStatement statement = connection.prepareStatement(
+                    "UPDATE Alumnos SET nombre = ?, apellido = ?, dni = ?, estado = ?, " +
+                        "direccion = ?, localidad = ?, municipio = ?, provincia = ?, nacimiento = ?, curso = ? " +
+                        "WHERE id = ?");
+
+            statement.setString(1, alumno.getNombre());
+            statement.setString(2, alumno.getApellido());
+            statement.setString(3, alumno.getDni());
+            statement.setString(4, alumno.getEstado().getNombre());
+            statement.setString(5, alumno.getDireccion());
+            statement.setString(7, alumno.getLocalidad());
+            statement.setString(6, alumno.getMunicipio());
+            statement.setString(8, alumno.getProvincia());
+            statement.setDate(9, new java.sql.Date(alumno.getNacimiento().getTime()));
+            statement.setLong(10, alumno.getCurso().getId());
+            statement.setLong(11, alumno.getId());
+
+            statement.executeQuery();
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
     }
 }

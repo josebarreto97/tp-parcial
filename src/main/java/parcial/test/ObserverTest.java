@@ -14,7 +14,20 @@ public class ObserverTest {
         EstablecimientoDao establecimientoDao = new EstablecimientoDao();
         Establecimiento establecimiento = establecimientoDao.get(1);
 
+        Alumno lautaro = establecimiento.getCursos().get(3).getAlumnos().get(0);
+        Alumno jose = establecimiento.getCursos().get(0).getAlumnos().get(0);
+
         System.out.println(establecimiento.getNombre());
+
+        AlumnoDao alumnoDao = new AlumnoDao();
+
+        jose.promociona();
+        jose.repite();
+        jose.sale();
+
+        alumnoDao.update(jose, new String[]{});
+
+        System.out.println("Listo");
     }
 
     public static void crearAlumno() {

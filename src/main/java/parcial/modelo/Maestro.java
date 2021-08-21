@@ -9,13 +9,9 @@ import java.util.List;
 @Getter
 @Setter
 public class Maestro extends Educador{
-    private String nombre;
-    private List<Curso> cursos;
     private List<Educador> ayudantes;
-    private BandejaNotificaciones bandejaNotificaciones;
 
     public Maestro() {
-        this.cursos = new ArrayList<>();
         this.ayudantes = new ArrayList<>();
     }
 
@@ -27,6 +23,6 @@ public class Maestro extends Educador{
             nombresAyudantes.append(ayudante.getNombresDeAyudantes()).append(" ");
         }
 
-        return nombre + " " + nombresAyudantes;
+        return this.getNombre() + " " + nombresAyudantes;
     }
 }

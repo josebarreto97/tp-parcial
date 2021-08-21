@@ -28,7 +28,7 @@ public class Alumno extends Observable{
     }
 
     public void sale() {
-        this.estado.repite(this);
+        this.estado.sale(this);
     }
 
     public void setNombre(String nombre) {
