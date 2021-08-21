@@ -76,7 +76,7 @@ public class AyudanteDao implements Dao<Ayudante>{
     }
 
     @Override
-    public void update(Ayudante ayudante, String[] params) {
+    public void update(Ayudante ayudante) {
 
     }
 }

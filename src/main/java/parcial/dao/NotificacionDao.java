@@ -63,7 +63,7 @@ public class NotificacionDao implements Dao<Notificacion>{
     }
 
     @Override
-    public void update(Notificacion notificacion, String[] params) {
+    public void update(Notificacion notificacion) {
 
     }
 }

@@ -1,15 +1,11 @@
 package parcial.dao;
 
 import parcial.modelo.BandejaNotificaciones;
-import parcial.modelo.Educador;
-import parcial.modelo.Maestro;
-import parcial.modelo.Notificacion;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.stream.Collectors;
 
 public class BandejaNotificacionesDao implements Dao<BandejaNotificaciones>{
     @Override
@@ -44,7 +40,7 @@ public class BandejaNotificacionesDao implements Dao<BandejaNotificaciones>{
     }
 
     @Override
-    public void update(BandejaNotificaciones bandejaNotificaciones, String[] params) {
+    public void update(BandejaNotificaciones bandejaNotificaciones) {
 
     }
 }

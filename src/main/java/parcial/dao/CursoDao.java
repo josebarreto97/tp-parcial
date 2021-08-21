@@ -1,8 +1,6 @@
 package parcial.dao;
 
 import parcial.modelo.Curso;
-import parcial.modelo.Educador;
-import parcial.modelo.Establecimiento;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -74,7 +72,7 @@ public class CursoDao implements Dao<Curso>{
     }
 
     @Override
-    public void update(Curso curso, String[] params) {
+    public void update(Curso curso) {
 
     }
 }

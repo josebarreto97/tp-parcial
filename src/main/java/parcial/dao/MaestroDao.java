@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class MaestroDao implements Dao<Maestro>{
@@ -58,7 +57,7 @@ public class MaestroDao implements Dao<Maestro>{
     }
 
     @Override
-    public void update(Maestro maestro, String[] params) {
+    public void update(Maestro maestro) {
 
     }
 }

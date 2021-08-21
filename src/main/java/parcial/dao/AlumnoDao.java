@@ -104,7 +104,22 @@ public class AlumnoDao implements Dao<Alumno>{
     public void save(Alumno alumno) {
         try {
             Connection connection = DB.getInstancia().getConnection();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO Alumnos");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO Alumnos" +
+                    "(nombre, apellido, dni, nacimiento, provincia, municipio, localidad, direccion, estado, curso)" +
+                    "VALUES (?,?,?,?,?,?,?,?,?,?)");
+
+            statement.setString(1, alumno.getNombre());
+            statement.setString(2, alumno.getApellido());
+            statement.setString(3, alumno.getDni());
+            statement.setDate(4, new java.sql.Date(alumno.getNacimiento().getTime()));
+            statement.setString(5, alumno.getProvincia());
+            statement.setString(6, alumno.getMunicipio());
+            statement.setString(7, alumno.getLocalidad());
+            statement.setString(8, alumno.getDireccion());
+            statement.setString(9, alumno.getEstado().getNombre());
+            statement.setLong(10, alumno.getCurso().getId());
+
+            statement.executeQuery();
 
         } catch (SQLException exception) {
             exception.printStackTrace();
@@ -112,7 +127,7 @@ public class AlumnoDao implements Dao<Alumno>{
     }
 
     @Override
-    public void update(Alumno alumno, String[] params) {
+    public void update(Alumno alumno) {
         Connection connection = DB.getInstancia().getConnection();
 
         try {

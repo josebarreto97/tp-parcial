@@ -27,8 +27,4 @@ public class BandejaNotificaciones {
         notificacionDao.saveInto(notificacion, this);
     }
 
-    public void limpiar() {
-        notificaciones.clear();
-    }
-
 }
