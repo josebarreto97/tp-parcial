@@ -22,6 +22,7 @@ public class CursoDao implements Dao<Curso>{
             ResultSet result = statement.executeQuery();
 
             AlumnoDao alumnoDao = new AlumnoDao();
+            MaestroDao maestroDao = new MaestroDao();
 
             while(result.next()) {
                 curso = new Curso();
@@ -29,6 +30,7 @@ public class CursoDao implements Dao<Curso>{
                 curso.setGrado(result.getString("grado"));
                 curso.setDivision(result.getString("division"));
                 curso.setEgresados(result.getBoolean("egresados"));
+                curso.setEducador(maestroDao.getFromCurso(curso));
                 curso.setAlumnos(alumnoDao.getFromCurso(curso));
             }
         } catch (SQLException exception) {

@@ -30,7 +30,20 @@ public class AlumnoDao implements Dao<Alumno>{
             while(resultSet.next()) {
                 alumno = new Alumno();
                 getAlumnoFromResult(resultSet, alumno);
-                alumno.setCurso(cursoDao.get(resultSet.getLong("curso")));
+                Curso curso = cursoDao.get(resultSet.getLong("curso"));
+                alumno.setCurso(curso);
+
+                if(curso.getEducador() != null) {
+                    AlumnoCambioDeCursoObserver observer1 = new AlumnoCambioDeCursoObserver();
+                    AlumnoRepitenteObserver observer2 = new AlumnoRepitenteObserver();
+                    AlumnoSalidoObserver observer3 = new AlumnoSalidoObserver();
+
+                    observer1.setBandeja(curso.getEducador().getBandejaNotificaciones());
+                    observer2.setBandeja(curso.getEducador().getBandejaNotificaciones());
+                    observer3.setBandeja(curso.getEducador().getBandejaNotificaciones());
+
+                    alumno.setObservers(Arrays.asList(observer1, observer2, observer3));
+                }
 
                 for (Estado estado : this.estados) {
                     String estadoNombre = estado.getNombre();
@@ -111,7 +124,10 @@ public class AlumnoDao implements Dao<Alumno>{
             statement.setString(1, alumno.getNombre());
             statement.setString(2, alumno.getApellido());
             statement.setString(3, alumno.getDni());
-            statement.setDate(4, new java.sql.Date(alumno.getNacimiento().getTime()));
+            if(alumno.getNacimiento() != null)
+                statement.setDate(4, new java.sql.Date(alumno.getNacimiento().getTime()));
+            else
+                statement.setDate(4, null);
             statement.setString(5, alumno.getProvincia());
             statement.setString(6, alumno.getMunicipio());
             statement.setString(7, alumno.getLocalidad());
@@ -144,7 +160,10 @@ public class AlumnoDao implements Dao<Alumno>{
             statement.setString(7, alumno.getLocalidad());
             statement.setString(6, alumno.getMunicipio());
             statement.setString(8, alumno.getProvincia());
-            statement.setDate(9, new java.sql.Date(alumno.getNacimiento().getTime()));
+            if(alumno.getNacimiento() != null)
+                statement.setDate(9, new java.sql.Date(alumno.getNacimiento().getTime()));
+            else
+                statement.setDate(9, null);
             statement.setLong(10, alumno.getCurso().getId());
             statement.setLong(11, alumno.getId());
 

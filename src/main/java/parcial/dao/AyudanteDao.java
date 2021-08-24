@@ -40,7 +40,7 @@ public class AyudanteDao implements Dao<Ayudante>{
         return ayudante;
     }
 
-    public List<Ayudante> getAyudanteFromMaestro(Maestro maestro) {
+    public List<Ayudante> getAyudantesFromMaestro(Maestro maestro) {
         Connection connection = DB.getInstancia().getConnection();
 
         List<Ayudante> ayudantes = new ArrayList<>();

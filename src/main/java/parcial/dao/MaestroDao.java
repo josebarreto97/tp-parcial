@@ -35,7 +35,7 @@ public class MaestroDao implements Dao<Maestro>{
                 maestro.setId(resultSet.getLong("id"));
                 maestro.setNombre(resultSet.getString("nombre"));
                 maestro.setAyudantes(ayudanteDao
-                        .getAyudanteFromMaestro(maestro)
+                        .getAyudantesFromMaestro(maestro)
                         .stream()
                         .map(ayudante -> (Educador) ayudante)
                         .collect(Collectors.toList())

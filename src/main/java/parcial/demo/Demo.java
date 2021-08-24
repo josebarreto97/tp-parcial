@@ -1,8 +1,8 @@
-package parcial.exec;
+package parcial.demo;
 
 import java.util.Scanner;
 
-public class App {
+public class Demo {
 
     private static Scanner scanner;
 

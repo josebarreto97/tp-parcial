@@ -1,4 +1,4 @@
-package parcial.exec;
+package parcial.demo;
 
 import java.util.Scanner;
 
@@ -17,6 +17,6 @@ public abstract class Command {
 
     void error(Scanner scanner, String expected, String actual) {
         System.out.println(ANSI_RED + "Error sintáctico: se esperaba " + ANSI_RESET  + expected + ANSI_RED + " pero se envio " + ANSI_RESET + actual);
-        scanner.nextLine();
+        new Menu().execute(scanner);
     }
 }
